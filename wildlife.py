@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Wildlife camera: heartbeat + PIR/ultrasonic-triggered capture, upload to dynames."""
+"""Wildlife camera: heartbeat + PIR/ultrasonic-triggered capture, scp upload."""
 
 import argparse
 import logging
@@ -160,7 +160,7 @@ def main():
     cap_cfg = cfg.get("capture", {})
     log_cfg = cfg.get("logging", {})
     cap = Capture(cap_cfg, Path(log_cfg.get("local_dir", "captures")))
-    up = Uploader(cfg.get("upload", {"host": "dynames"}))
+    up = Uploader(cfg.get("upload", {"host": "upload.example.internal"}))
 
     pir = ultrasonic = None
     if cfg.get("pir", {}).get("enabled"):

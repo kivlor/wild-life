@@ -1,7 +1,7 @@
 # wild-life
 
 Raspberry Pi Zero wildlife camera: heartbeat + PIR/ultrasonic-triggered capture,
-uploads to dynames over scp. Designed to be battery-friendly (small JPEGs,
+uploads to a server of your choosing over scp. Designed to be battery-friendly (small JPEGs,
 short WiFi bursts, buffers locally if the network drops).
 
 ## Setup (on the Pi)
@@ -42,5 +42,5 @@ journalctl -u wildlife -f
   ~60s warm-up (script handles this). Avoid aiming at sunlit foliage.
 - **HC-SR04 ultrasonic**: ECHO pin is 5V — **must** go through a voltage divider
   (e.g. 1k/2k resistors) before the GPIO pin. Aim at the feeder as a tripwire.
-- SSH key auth to dynames should be set up (`ssh-copy-id user@dynames`) so scp
+- SSH key auth to the upload host should be set up (`ssh-copy-id user@your-host`) so scp
   works unattended (script uses `BatchMode=yes`).

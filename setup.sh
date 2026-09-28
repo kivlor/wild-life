@@ -92,7 +92,7 @@ if [ ! -f "$INSTALL_DIR/config.yaml" ]; then
 # Wildlife cam configuration
 # See config.example.yaml for all options
 upload:
-  host: dynames
+  host: upload.example.internal   # change to your upload server
   user: "${SERVICE_USER}"
   remote_dir: ~/wildlife
 capture:

@@ -1,6 +1,6 @@
 # Upload destination (ssh)
 upload:
-  host: dynames
+  host: upload.example.internal   # your upload server
   user: your-user
   remote_dir: ~/wildlife
 
