@@ -1,0 +1,28 @@
+# Upload destination (ssh)
+upload:
+  host: dynames
+  user: your-user
+  remote_dir: ~/wildlife
+
+capture:
+  width: 800          # small = fast upload, less WiFi power
+  height: 600
+  quality: 50          # jpeg quality; 40-60 is the sweet spot
+  interval: 60         # seconds between heartbeat captures
+
+pir:
+  enabled: false
+  pin: 17              # BCM pin; HC-SR501 OUT (3.3V, Pi-safe)
+  warmup: 60           # ignore triggers for N seconds after boot
+  debounce: 30         # min seconds between PIR captures
+
+ultrasonic:
+  enabled: false
+  trig_pin: 23
+  echo_pin: 24
+  # ECHO outputs 5V — use a voltage divider (e.g. 1k/2k) before GPIO!
+  threshold: 15        # cm deviation from baseline to trigger
+  debounce: 30
+
+logging:
+  local_dir: captures  # buffer here; uploads retry 3x, keep on failure

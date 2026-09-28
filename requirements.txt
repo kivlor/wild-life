@@ -1,0 +1,4 @@
+pyyaml
+# RPi.GPIO is installed via apt (python3-rpi.gpio) when possible;
+# system-site-packages venv makes it importable. Uncomment as fallback:
+# RPi.GPIO
