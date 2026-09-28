@@ -12,6 +12,23 @@ SERVICE_USER="$(id -un)"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 # ----------------------------
+# Bootstrap: when piped in via `curl | bash` the repo isn't on disk yet.
+# Clone it and re-run setup.sh from inside the clone.
+# ----------------------------
+if [ ! -f wildlife.py ]; then
+  # Piped in via `curl | bash` (or run outside the repo) — clone and re-run.
+  DEST="${INSTALL_DIR:-$HOME/wild-life}"
+  echo "==> Repo files not found in $(pwd) — cloning wild-life to $DEST"
+  if ! command -v git >/dev/null 2>&1; then
+    sudo apt-get update -y
+    sudo apt-get install -y git
+  fi
+  git clone https://github.com/kivlor/wild-life.git "$DEST"
+  cd "$DEST"
+  exec bash setup.sh
+fi
+
+# ----------------------------
 # Sanity checks
 # ----------------------------
 echo "==> Checking environment"

@@ -7,10 +7,12 @@ short WiFi bursts, buffers locally if the network drops).
 ## Setup (on the Pi)
 
 ```bash
-git clone <this repo> ~/wild-life && cd ~/wild-life
-chmod +x setup.sh
-./setup.sh
+curl -fsSL https://raw.githubusercontent.com/kivlor/wild-life/refs/heads/main/setup.sh | bash
 ```
+
+The script bootstraps itself: if the repo isn't already on disk it installs git,
+clones itself into `~/wild-life` (override with `INSTALL_DIR=...`), and re-runs
+from inside the clone.
 
 The setup script will:
 - install system packages (libcamera-apps, python3-venv, etc.)
